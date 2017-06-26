@@ -1,0 +1,25 @@
+// Add imports here
+#import "platform:/resource/DroolsHelloWorld/model/DroolsHelloWorld.ecore"
+#import "platform:/resource/DroolsHelloWorld/model/BuildingLanguage.ecore"
+#import "platform:/resource/DroolsHelloWorld/model/NetworkInfrastructure.ecore"
+
+#schema DroolsHelloWorld
+	
+#source {
+	BuildingLanguage
+}
+
+#target { 
+	NetworkInfrastructure
+} 
+
+#correspondence {
+	BuildingToRouter {
+		#src->Building
+		#trg->Router
+	}
+}
+
+#attributeConditions {
+	
+}
