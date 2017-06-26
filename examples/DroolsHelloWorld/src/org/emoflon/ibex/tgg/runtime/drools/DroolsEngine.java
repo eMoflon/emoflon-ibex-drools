@@ -18,6 +18,9 @@ import language.TGG;
 
 public class DroolsEngine implements PatternMatchingEngine {
 
+	private DroolsChangeNotifier notifier;
+	private ResourceSet rs;
+	
 	@Override
 	public void registerInternalMetamodels() {
 		// TODO
@@ -26,7 +29,9 @@ public class DroolsEngine implements PatternMatchingEngine {
 	@Override
 	public void initialise(ResourceSet rs, OperationalStrategy operationalStrategy, TGG tgg, TGG flattenedTgg,
 			String projectPath, boolean debug) {
-		// TODO Add listeners to all models in rs
+		notifier = new DroolsChangeNotifier();
+		this.rs = rs;
+		rs.eAdapters().add(notifier);
 	}
 
 	@Override
@@ -56,7 +61,8 @@ public class DroolsEngine implements PatternMatchingEngine {
 
 	@Override
 	public void terminate() {
-		// TODO:  Remove listeners, free session
+		// TODO free session
+		rs.eAdapters().remove(notifier);
 	}
 
 }
