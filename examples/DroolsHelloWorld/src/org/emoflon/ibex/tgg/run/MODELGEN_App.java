@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.log4j.BasicConfigurator;
 import org.emoflon.ibex.tgg.operational.strategies.gen.MODELGEN;
 import org.emoflon.ibex.tgg.operational.strategies.gen.MODELGENStopCriterion;
-import org.emoflon.ibex.tgg.runtime.engine.DemoclesEngine;
+import org.emoflon.ibex.tgg.runtime.drools.DroolsEngine;
 
 public class MODELGEN_App extends MODELGEN {
 
@@ -21,7 +21,7 @@ public class MODELGEN_App extends MODELGEN {
 		BasicConfigurator.configure();
 
 		MODELGEN_App generator = new MODELGEN_App("DroolsHelloWorld", "./../", true);
-		generator.registerPatternMatchingEngine(new DemoclesEngine());
+		generator.registerPatternMatchingEngine(new DroolsEngine());
 
 		MODELGENStopCriterion stop = new MODELGENStopCriterion(generator.tgg);
 		stop.setTimeOutInMS(100);
