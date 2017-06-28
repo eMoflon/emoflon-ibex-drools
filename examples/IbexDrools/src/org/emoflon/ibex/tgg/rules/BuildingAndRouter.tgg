@@ -1,0 +1,23 @@
+#using IbexDrools.*
+#using AttrCondDefLibrary.*
+
+#rule BuildingAndRouter #with IbexDrools
+
+#source { 
+	++building:Building
+}
+
+#target {
+	++router:Router
+}
+
+#correspondence {
+	++b2r:BuildingToRouter {
+		#src->building
+		#trg->router
+	}
+}
+
+#attributeConditions {
+	
+}

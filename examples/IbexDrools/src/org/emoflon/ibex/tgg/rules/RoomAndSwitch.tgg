@@ -1,0 +1,33 @@
+#using IbexDrools.*
+#using AttrCondDefLibrary.*
+
+#rule RoomAndSwitch #with IbexDrools
+
+#source { 
+	b:Building {
+		++ -rooms->room	
+	} 
+	
+	++ room:Room	
+}
+
+#target {
+	r:Router {
+		++ -switches->s1
+		++ -switches->s2
+	}
+	
+	++s1:Switch
+	++s2:Switch
+}
+
+#correspondence {
+	b2r:BuildingToRouter {
+		#src->b
+		#trg->r
+	}
+}
+
+#attributeConditions {
+	
+}
